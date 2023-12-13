@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $phone="";
     $adress="";
     $user=new User($username,$password,$name,$email,$phone,$adress);
-    $user->login($username,$password);
+    $user->login($password);
 }
 
 

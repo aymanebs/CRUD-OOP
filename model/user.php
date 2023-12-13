@@ -30,8 +30,7 @@ class User{
         $stmt->bind_param("sssssss",$this->username,$this->password,$this->name,$this->email,$this->phone,$this->adress,$this->role);
         $stmt->execute();
     }
-
-    function login($username,$password){
+    function getUserByUsername(){
         $connection =new mysqli("localhost","root","","brief3");
         if($connection->connect_error){
             die("connection error");
@@ -41,6 +40,16 @@ class User{
         $stmt->execute();
         $result=$stmt->get_result();
         $row=$result->fetch_assoc();
+        return $row;
+    }
+
+    function login($password){
+      
+        $row=$this->getUserByUsername();
+        if(!$row){
+            echo"invalid username";
+        }
+        else{
         if(password_verify($password,$row['password'])){
             echo'logged in';   
         }
@@ -48,6 +57,11 @@ class User{
             die("invalid password");
         }
     }
+    }
+
+   
+
+    
 }
 
 
