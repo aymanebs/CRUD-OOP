@@ -5,7 +5,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         require __DIR__ ."/authcontrol.php";
         $username=htmlspecialchars($_POST['username']);
         $password=htmlspecialchars($_POST['password']);
-        $auth=new authcontrol();
+        $auth=new Authcontrol();
         $auth->login($username,$password);
 }
 

@@ -1,5 +1,5 @@
 <?php 
-    // session_start();
+    session_start();
     require __DIR__ . "/../../controller/auth/login.php";
 ?>
 
@@ -40,6 +40,9 @@
             <div class="header-text mb-4">
                  <h2>Hello,Again</h2>
                  <p>We are happy to have you back.</p>
+                 <?php if(isset($_SESSION['error'])){ ?>
+                                            <p style="color:red;"><?php echo$_SESSION['error']?><p>
+                                        <?php } ?>
             </div>
             <form action="/controller/auth/login.php" method="POST">
 

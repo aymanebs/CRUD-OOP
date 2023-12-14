@@ -1,6 +1,6 @@
 <?php
 // session_start();
-class authcontrol
+class Authcontrol
 {
     function login($username, $password)
     {
@@ -8,17 +8,22 @@ class authcontrol
         $email = "";
         $phone = "";
         $adress = "";
+        $error="";
         $user = new user($username, $password, $name, $email, $phone, $adress);
         $result = $user->getUserByUsername();
         if (!$result) {
-            echo 'invalid username';
+            $error="invalid input";
         } else {
             if (password_verify($password, $result['password'])) {
-                echo "logged in";
+                header('Location:/../../index.php');
+                exit();
             } else {
-                echo "invalid password";
+                $error="invalid input";
             }
         }
+        $_SESSION['error'] = $error;
+        header('Location : /../../view/auth/login.php');
+        exit();
     }
     
     function register($username, $password, $password_confirmation, $name, $email, $phone, $adress)
@@ -39,7 +44,7 @@ class authcontrol
                 $error = "username already used";
             } else {
                 $user->create();
-                header('Location: /../../index.php');
+                header('Location: /../../view/auth/login.php');
                 exit();
             }
         }

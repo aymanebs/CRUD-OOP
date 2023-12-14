@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         $phone=htmlspecialchars($_POST['phone']);
         $adress=htmlspecialchars($_POST['adress']);
 
-        $auth=new authcontrol();
+        $auth=new Authcontrol();
         $auth->register($username,$password, $password_confirmation, $name, $email, $phone, $adress);
 }
 
