@@ -15,22 +15,21 @@
             <div class="col-md-9 register-right">
                 <br><br>
                 <div class="tab-content" id="myTabContent">
-                    
+                <?php if(isset($_SESSION['error'])){ ?>
+                                            <p style="color:red;"><?php echo$_SESSION['error']?><p>
+                                        <?php } ?>
                         
                         <form action="/controller/auth/register.php" method="POST" id="form">
                             <div class="row register-form">
                                 <div class="col-md-6">
+                                
                                     <div class="form-group  ">
                                         <input type="text" class="form-control" id="username" name="username" placeholder="username *" value="" />
-                                        <?php if(isset($_SESSION['alert'])){ if($_SESSION['alert']=="empty field"){ ?>
-                                            <p><?php echo"empty field"?><p>
-                                        <?php }} ?>
+                                       
                                     </div>
                                     <div class="form-group ">
                                         <input type="text" class="form-control" id="password" name="password" placeholder="Password *" value="" />
-                                        <?php if(isset($_SESSION['alert-password'])){ if($_SESSION['alert-password']=="empty field"){ ?>
-                                            <p><?php echo"empty field"?><p>
-                                        <?php }} ?>
+                                       
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="password2" name="password_confirmation" placeholder="Confirm Password *" value="" />
@@ -39,30 +38,22 @@
                                  
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Name *" value="" />
-                                        <?php if(isset($_SESSION['alert-name'])){ if($_SESSION['alert-name']=="empty field"){ ?>
-                                            <p><?php echo"empty field"?><p>
-                                        <?php }} ?>
+                                       
                                     </div>
 
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input type="text" id="email" name="email" class="form-control" placeholder="Your Email  *" value="" />
-                                        <?php if(isset($_SESSION['alert-email'])){ if($_SESSION['alert-email']=="empty field"){ ?>
-                                            <p><?php echo"empty field"?><p>
-                                        <?php }} ?>
+                                     
                                     </div>
                                     <div class="form-group">
                                         <input type="text" id="phone" name="phone" class="form-control" placeholder="Your Phone *" value="" />
-                                        <?php if(isset($_SESSION['alert-phone'])){ if($_SESSION['alert-phone']=="empty field"){ ?>
-                                            <p><?php echo"empty field"?><p>
-                                        <?php }} ?>
+                                     
                                     </div>
                                     <div class="form-group">
                                         <input type="text" id="adress" name="adress" class="form-control" placeholder="Your Adress *" value="" />
-                                        <?php if(isset($_SESSION['alert-adress'])){ if($_SESSION['alert-adress']=="empty field"){ ?>
-                                            <p><?php echo"empty field"?><p>
-                                        <?php }} ?>
+            
                                     </div>
 
                                     <input type="submit" class="btnRegister" value="Register" />

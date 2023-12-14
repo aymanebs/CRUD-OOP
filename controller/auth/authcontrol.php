@@ -23,25 +23,30 @@ class authcontrol
     
     function register($username, $password, $password_confirmation, $name, $email, $phone, $adress)
     {
-        $user = new user($username, $password, $name, $email, $phone, $adress);
+        $user = new User($username, $password, $name, $email, $phone, $adress);
 
         $error = "";
+    
         if (empty($username) || empty($password) || empty($password_confirmation) || empty($name) || empty($email) || empty($phone) || empty($adress)) {
-            $error = "empty field";
-        } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $error = "You should fill are fields!!!";
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $error = "invalid email";
-            if ($password != $password_confirmation) {
-                $error = "passwords don't match";
-            }
+        } elseif ($password != $password_confirmation) {
+            $error = "passwords don't match";
+        } else {
             $result = $user->getUserByUsername();
             if ($result) {
                 $error = "username already used";
+            } else {
+                $user->create();
+                header('Location: /../../index.php');
+                exit();
             }
-            $_SESSION['error'] = $error;
-            header('Location:/../../view/auth/register.php');
-            exit();
-        } else {
-            $user->create();
         }
+    
+    
+        $_SESSION['error'] = $error;
+        header('Location: /../../view/auth/register.php');
+        exit();
     }
 }
