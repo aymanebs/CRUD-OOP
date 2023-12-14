@@ -32,10 +32,10 @@
                                             <p><?php echo"empty field"?><p>
                                         <?php }} ?>
                                     </div>
-                                    <!-- <div class="form-group">
+                                    <div class="form-group">
                                         <input type="text" class="form-control" id="password2" name="password_confirmation" placeholder="Confirm Password *" value="" />
                                         
-                                    </div> -->
+                                    </div>
                                  
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Name *" value="" />
