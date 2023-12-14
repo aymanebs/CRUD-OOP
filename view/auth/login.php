@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     require __DIR__ . "/../../controller/auth/login.php";
 ?>
 
@@ -12,6 +13,7 @@
     <title>Login</title>
 </head>
 <body>
+
 
  <!----------------------- Main Container -------------------------->
 
@@ -54,7 +56,7 @@
             </form>
             
             <div class="row">
-                <small>Don't have account? <a href="/view/auth/sign.php">Sign Up</a></small>
+                <small>Don't have account? <a href="/view/auth/register.php">Sign Up</a></small>
             </div>
       </div>
    </div> 
@@ -62,5 +64,6 @@
   </div>
 </div>
 <?php
+session_unset();
 include_once "../../layout/footer.php";
 ?>

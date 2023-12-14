@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 class User{
     private $username;
@@ -48,6 +49,7 @@ class User{
         $row=$this->getUserByUsername();
         if(!$row){
             echo"invalid username";
+          
         }
         else{
         if(password_verify($password,$row['password'])){
@@ -57,10 +59,8 @@ class User{
             die("invalid password");
         }
     }
+    
     }
-
-   
-
     
 }
 
